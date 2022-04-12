@@ -19,6 +19,7 @@ jobs:
         uses: nx-amiribenabdellah/php-build-action@2.18.0
         with:
           php-version: '8.1.1'
+          tools: composer, phpunit/phpunit, phplint
 
   phpunit:
     needs: php-build-action
