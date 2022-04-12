@@ -27,6 +27,11 @@ jobs:
     steps:
       - name: Checkoutt
         uses: actions/checkout@v2
+      - name: php-build-action
+        uses: nx-amiribenabdellah/php-build-action@2.18.0
+        with:
+          php-version: '8.1.1'
+          tools: phpunit, phplint
       - uses: nx-amiribenabdellah/unitTest-action@v1.6
 
   phplint-docker:
