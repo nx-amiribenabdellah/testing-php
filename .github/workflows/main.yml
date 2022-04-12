@@ -54,8 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          composer require --dev phpunit/phpunit ^8
-          php composer.phar update
+
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
         env:
