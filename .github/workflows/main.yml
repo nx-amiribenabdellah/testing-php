@@ -19,7 +19,7 @@ jobs:
         uses: nx-amiribenabdellah/php-build-action@2.18.0
         with:
           php-version: '8.1.1'
-          tools: phpunit, phplint
+          tools: composer:v2, phpunit, phplint
 
   phpunit:
     needs: php-build-action
@@ -27,11 +27,6 @@ jobs:
     steps:
       - name: Checkoutt
         uses: actions/checkout@v2
-      - name: php-build-action
-        uses: nx-amiribenabdellah/php-build-action@2.18.0
-        with:
-          php-version: '8.1.1'
-          tools: phpunit, phplint
       - uses: nx-amiribenabdellah/unitTest-action@v1.6
 
   phplint-docker:
@@ -57,12 +52,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: php-build-action
-        uses: nx-amiribenabdellah/php-build-action@2.18.0
-        with:
-          php-version: '8.1.1'
-          tools: composer:v2, phpunit, phplint
-      - run: php composer.phar update
+      - run: |
+          composer require --dev phpunit/phpunit ^8
+          php composer.phar update
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
         env:
