@@ -32,7 +32,7 @@ jobs:
         with:
           php-version: '8.1.1'
           tools: phpunit, phplint
-      - uses: nx-amiribenabdellah/unitTest-action@v1.7
+      - uses: nx-amiribenabdellah/unitTest-action@v1.6
 
   phplint-docker:
     needs: php-build-action
@@ -62,6 +62,7 @@ jobs:
         with:
           php-version: '8.1.1'
           tools: composer:v2, phpunit, phplint
+          php composer.phar update
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
         env:
