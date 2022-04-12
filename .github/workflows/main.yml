@@ -27,8 +27,7 @@ jobs:
     steps:
       - name: Checkoutt
         uses: actions/checkout@v2
-      - id: foo
-        uses: nx-amiribenabdellah/unitTest-action@v1.6
+      - uses: nx-amiribenabdellah/unitTest-action@v1.6
 
   phplint-docker:
     needs: php-build-action
