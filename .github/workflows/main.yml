@@ -19,7 +19,7 @@ jobs:
         uses: nx-amiribenabdellah/php-build-action@2.18.0
         with:
           php-version: '8.1.1'
-          tools: composer:v2 --dev phpunit/phpunit , phpunit, phplint
+          tools: phpunit, phplint
 
   phpunit:
     needs: php-build-action
@@ -54,7 +54,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-
+          composer require --dev phpunit/phpunit ^8
           php composer.phar update
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/php@master
