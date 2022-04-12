@@ -28,10 +28,6 @@ jobs:
       - name: Checkoutt
         uses: actions/checkout@v2
       - id: foo
-      uses: nx-amiribenabdellah/php-build-action@2.18.0
-      with:
-        php-version: '8.1.1'
-        tools: phpunit, phplint
         uses: nx-amiribenabdellah/unitTest-action@v1.6
 
   phplint-docker:
@@ -57,10 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      uses: nx-amiribenabdellah/php-build-action@2.18.0
-      with:
-        php-version: '8.1.1'
-        tools: phpunit, phplint
       - run: |
           composer require --dev phpunit/phpunit ^8
           php composer.phar update
